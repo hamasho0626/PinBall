@@ -27,7 +27,7 @@ public class BrightnessRegulator : MonoBehaviour {
         else if(tag == "LargeStarTag")
         {
             this.defaultColor = Color.yellow;
-        } else if(tag == "SmallCloudTag" || tag == "LargeCloutTag")
+        } else if(tag == "SmallCloudTag" || tag == "LargeCloudTag")
         {
             this.defaultColor = Color.cyan;
         }
