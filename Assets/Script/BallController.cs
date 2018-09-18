@@ -50,14 +50,14 @@ public class BallController : MonoBehaviour {
 
             //ここに得点追加の処理を施す
 
-            ScoreUpDate(5);
+            ScoreUpDate(30);
         }
 
         if(other.gameObject.tag == "SmallStarTag")
         {
             //ここに得点追加処理を施す
 
-            ScoreUpDate(1);
+            ScoreUpDate(5);
         }
 
         if(other.gameObject.tag == "SmallCloudTag" )
@@ -67,7 +67,7 @@ public class BallController : MonoBehaviour {
 
         if(other.gameObject.tag == "LargeCloudTag")
         {
-            ScoreUpDate(1000);
+            ScoreUpDate(20);
         }
     }
 
