@@ -60,9 +60,14 @@ public class BallController : MonoBehaviour {
             ScoreUpDate(1);
         }
 
-        if(other.gameObject.tag == "SmallCloudTag" || other.gameObject.tag == "LargeCloudTag")
+        if(other.gameObject.tag == "SmallCloudTag" )
         {
             ScoreUpDate(10);
+        }
+
+        if(other.gameObject.tag == "LargeCloudTag")
+        {
+            ScoreUpDate(1000);
         }
     }
 
