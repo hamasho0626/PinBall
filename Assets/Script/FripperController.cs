@@ -28,6 +28,7 @@ public class FripperController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //以下、スマートフォン用の操作スクリプトです
 
         //タッチされたものがあるか（０ではないか）を判別する
         if (Input.touchCount > 0)
@@ -42,6 +43,7 @@ public class FripperController : MonoBehaviour {
                     if (touch.position.x <= WideDispSize && tag == "LeftFripperTag")
                     {
                         SetAngle(this.flickAngle);
+                        
                     }
 
                     if (touch.position.x >= WideDispSize && tag == "RightFripperTag")
@@ -65,6 +67,9 @@ public class FripperController : MonoBehaviour {
             }
         }
         
+
+        //以下、PC操作用のスクリプトです
+
         if(Input.GetKeyDown(KeyCode.LeftArrow) && tag == "LeftFripperTag") {
             SetAngle(this.flickAngle);
         }
@@ -85,6 +90,7 @@ public class FripperController : MonoBehaviour {
         }
 	}
 
+    //フリッパーに引数によって決められた動きをさせる関数
     public void SetAngle (float angle)
     {
         JointSpring jointSpr = this.myHingeJoint.spring;
