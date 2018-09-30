@@ -13,6 +13,9 @@ public class FripperController : MonoBehaviour {
     //はじいたときの傾き
     private float flickAngle = -20;
 
+    //画面の横幅を取得し、半分にする
+    int WideDispSize = Screen.width / 2;
+
 	// Use this for initialization
 	void Start () {
         //HingeJointコンポーネント取得
@@ -24,10 +27,43 @@ public class FripperController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//左矢印キーを押したとき左のフリッパーを動かす
-        //コンポーネントさせるのだから対照のタグが条件に該当するのかを調べている
-        //SetAngleもコンポーネントして対象を限定させているのだからいちいち調べずとも
-        //書き換えるだけですむ
+
+
+        //タッチされたものがあるか（０ではないか）を判別する
+        if (Input.touchCount > 0)
+        {
+            //複数のタッチがある場合はそれらを順に出力する
+            foreach (Touch touch in Input.touches)
+            {
+                //タッチの種類を判別する
+                if (touch.phase == TouchPhase.Began)
+                {
+                    //タッチされた場所に応じて左右どちらのフリッパーを動かすか決める
+                    if (touch.position.x <= WideDispSize && tag == "LeftFripperTag")
+                    {
+                        SetAngle(this.flickAngle);
+                    }
+
+                    if (touch.position.x >= WideDispSize && tag == "RightFripperTag")
+                    {
+                        SetAngle(this.flickAngle);
+                    }
+                }
+                //タッチの種類を判別する
+                else if (touch.phase == TouchPhase.Ended)
+                {
+                    //タップされていた場所に応じて左右どちらのフリッパーを元の位置に戻すかを決める
+                    if (touch.position.x <= WideDispSize && tag == "LeftFripperTag")
+                    {
+                        SetAngle(this.defaultAngle);
+                    }
+                    if (touch.position.x >= WideDispSize && tag == "RightFripperTag")
+                    {
+                        SetAngle(this.defaultAngle);
+                    }
+                }
+            }
+        }
         
         if(Input.GetKeyDown(KeyCode.LeftArrow) && tag == "LeftFripperTag") {
             SetAngle(this.flickAngle);
